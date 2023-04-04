@@ -1,9 +1,9 @@
 const { DB } = require(`${__basedir}/lib`);
 
 async function getEvents(req, res) {
-  const { DATE_START, DATE_END, clearEvents } = req.body.dateStart;
-  const gte = new Date(DATE_START);
-  const lt = new Date(DATE_END);
+  const { dateStart, dateEnd, clearEvents } = req.body;
+  const gte = new Date(dateStart);
+  const lt = new Date(dateEnd);
 
   if (isNaN(gte) || isNaN(lt)) return res.status(422).json({ error: true, message: 'Check dates' });
 
